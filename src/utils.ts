@@ -82,12 +82,34 @@ function extractProps(view: Component, propTypes: object) {
   return pickBy(filter, view.props);
 }
 
+const touchablePropTypes =  {
+  accessibilityComponentType: '',
+  accessibilityLabel: '',
+  accessibilityRole: '',
+  accessibilityTraits: '',
+  accessible: '',
+  children: '',
+  delayLongPress: '',
+  delayPressIn: 'number',
+  delayPressOut: 'number',
+  disabled: 'bool',
+  hitSlop: 'EdgeInsetsPropType',
+  onLayout: 'func',
+  onLongPress: 'func',
+  onPress: 'func',
+  onPressIn: 'func',
+  onPressOut: 'func',
+  pressRetentionOffset: 'EdgeInsetsPropType',
+  testID: 'string'
+}
+
+
 // Extract Touchable props from the given component instance.
 // - {`object`} `view` the component instance
 function extractTouchableProps(view: Component) {
   return extractProps(view, {
     // @ts-ignore: View.propTypes
-    ...TouchableWithoutFeedback.propTypes,
+    touchablePropTypes,
     testID: PropTypes.string,
   });
 }
